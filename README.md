@@ -37,24 +37,24 @@ graph TD
 ## 📚 Documentation Structure
 
 ### Core Documentation
-- **[System Architecture](system-architecture.md)** - Complete system design and workflow
-- **[Task Orchestration](task-orchestration.md)** - How tasks coordinate and share context
-- **[Data Models](data-models.md)** - Pydantic models and data structures
-- **[Configuration Guide](configuration-guide.md)** - Setup, configuration, and customization
+- **[System Architecture](docs/system-architecture.md)** - Complete system design and workflow
+- **[Task Orchestration](docs/task-orchestration.md)** - How tasks coordinate and share context
+- **[Data Models](docs/data-models.md)** - Pydantic models and data structures
+- **[Configuration Guide](docs/configuration-guide.md)** - Setup, configuration, and customization
 
 ### Agent Documentation
-- **[Agent Overview](agents/README.md)** - Complete agent roles and capabilities
-- **[Job Analyzer](agents/job-analyzer.md)** - ATS keyword extraction and scoring
-- **[Resume Analyzer](agents/resume-analyzer.md)** - Format compliance and optimization
-- **[Company Researcher](agents/company-researcher.md)** - Industry intelligence and research
-- **[Cover Letter Generator](agents/cover-letter-generator.md)** - Personalized cover letter creation
-- **[Resume Writer](agents/resume-writer.md)** - Content integration and optimization
-- **[Report Generator](agents/report-generator.md)** - Visual analytics and reporting
+- **[Agent Overview](docs/agents/README.md)** - Complete agent roles and capabilities
+- **[Job Analyzer](docs/agents/job-analyzer.md)** - ATS keyword extraction and scoring
+- **[Resume Analyzer](docs/agents/resume-analyzer.md)** - Format compliance and optimization
+- **[Company Researcher](docs/agents/company-researcher.md)** - Industry intelligence and research
+- **[Cover Letter Generator](docs/agents/cover-letter-generator.md)** - Personalized cover letter creation
+- **[Resume Writer](docs/agents/resume-writer.md)** - Content integration and optimization
+- **[Report Generator](docs/agents/report-generator.md)** - Visual analytics and reporting
 
 ### Usage & Implementation
-- **[Usage Examples](usage-examples.md)** - How to run and customize the system
-- **[Output Specifications](output-specifications.md)** - What the system produces
-- **[Troubleshooting](troubleshooting.md)** - Common issues and solutions
+- **[Usage Examples](docs/usage-examples.md)** - How to run and customize the system
+- **[Output Specifications](docs/output-specifications.md)** - What the system produces
+- **[Troubleshooting](docs/troubleshooting.md)** - Common issues and solutions
 
 ## 🚀 Quick Start
 
