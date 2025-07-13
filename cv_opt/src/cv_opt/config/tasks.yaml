@@ -1,0 +1,514 @@
+analyze_job_task:
+  description: >
+    Analyze job description from {job_url} and provide comprehensive ATS-optimized 
+    candidate scoring with 2025 industry standards. Extract ATS keywords, identify 
+    format requirements, and generate optimization recommendations.
+
+    **STEP 1: Job Requirements & ATS Analysis**
+    - Extract and categorize requirements: technical skills, soft skills, experience, education
+    - Identify ATS system type (Workday, Greenhouse, Lever, iCIMS, etc.) from job posting
+    - Extract ATS-specific keywords with importance weighting (1-5 scale)
+    - Categorize keywords: technical, soft, experience, industry, certifications
+    - Identify 2025 industry trending keywords (AI/ML, sustainability, remote work, etc.)
+    - Note format requirements and application instructions
+
+    **STEP 2: Keyword Extraction & Prioritization**
+    - Primary ATS keywords: Exact matches required for initial screening
+    - Secondary keywords: Contextual matches and synonyms
+    - Industry-specific 2025 trends: Emerging skills and technologies
+    - Compliance keywords: Certifications, regulations, security requirements
+    - Weight keywords by frequency and positioning in job description
+    - Identify required vs. preferred qualifications
+
+    **STEP 3: Candidate Scoring (ATS + Human Review)**
+    - Technical Skills (35%): ATS keyword matching, years of experience, context relevance
+    - Soft Skills (20%): Leadership, communication, teamwork evidence
+    - Experience (25%): Role similarity, industry relevance, achievement quantification
+    - Education (10%): Degree match, certifications, continuous learning
+    - Industry Knowledge (10%): Domain expertise, current trends awareness
+    - ATS Compatibility: Format compliance, keyword density, parsing optimization
+
+    **STEP 4: Gap Analysis & Recommendations**
+    - Critical gaps: Must-have skills/keywords missing from candidate profile
+    - Recommended improvements: Nice-to-have skills for competitive advantage
+    - ATS optimization opportunities: Keyword integration strategies
+    - Format compliance issues: Parsing problems to address
+    - Industry trend alignment: 2025 skills to develop
+
+    **STEP 5: Strategic Insights Generation**
+    - Resume optimization focus areas with specific keyword placement
+    - Cover letter talking points tied to company priorities
+    - Interview preparation insights based on job emphasis
+    - Skill development roadmap for career growth
+    - ATS system-specific optimization tips
+
+  expected_output: >
+    Comprehensive JSON analysis following the enhanced JobRequirements model with:
+    - Complete ATS keyword extraction with importance weights
+    - Industry trend analysis for 2025
+    - Detailed candidate scoring with ATS compatibility
+    - Format compliance recommendations
+    - Strategic optimization insights for resume and cover letter
+    - Skill gap analysis with development priorities
+  agent: job_analyzer
+
+optimize_resume_task:
+  description: >
+    Analyze the provided resume against job requirements and create comprehensive 
+    ATS-optimized recommendations. Focus on format compliance, keyword optimization, 
+    and content originality for 2025 standards.
+
+    **STEP 1: ATS Format Compliance Analysis**
+    - Check file format compatibility (.docx, .doc, .txt - not PDF)
+    - Verify single-column layout (no tables, text boxes, or multi-column)
+    - Validate standard fonts (Arial, Times New Roman, Calibri - no custom fonts)
+    - Ensure no images, graphics, charts, or embedded objects
+    - Check header/footer usage (content should be in body only)
+    - Verify standard section headers (Experience, Education, Skills, etc.)
+    - Assess bullet point usage (standard bullets, not symbols or images)
+
+    **STEP 2: Content Originality & Anti-AI Detection**
+    - Scan for AI-generated content patterns and generic phrases
+    - Check for copied job description language or template content
+    - Verify authentic, personalized achievement descriptions
+    - Identify opportunities for unique, candidate-specific content
+    - Flag potential plagiarism or duplicate content issues
+    - Ensure original voice and authentic experiences
+
+    **STEP 3: Keyword Optimization Strategy**
+    - Map job-required keywords to optimal resume sections
+    - Calculate current keyword density and identify gaps
+    - Suggest natural keyword integration (avoid stuffing)
+    - Prioritize keywords by ATS importance and job requirements
+    - Recommend section-specific keyword placement strategy
+    - Balance keyword usage with readability and flow
+
+    **STEP 4: Content Enhancement & Achievement Quantification**
+    - Review achievement descriptions for impact and specificity
+    - Suggest quantifiable metrics and results where missing
+    - Identify skills to highlight based on job match analysis
+    - Recommend relevant certifications or training to add
+    - Suggest experience section improvements with stronger action verbs
+    - Optimize summary/objective for ATS and human appeal
+
+    **STEP 5: Section-Specific Optimization**
+    - Professional Summary: Keyword-rich, role-specific positioning
+    - Experience: Achievement-focused, quantified results, relevant keywords
+    - Skills: Balanced technical/soft skills, ATS-optimized presentation
+    - Education: Relevant degrees, certifications, continuous learning
+    - Additional Sections: Projects, volunteer work, language skills as applicable
+    - Contact Information: Professional, complete, ATS-readable format
+
+  expected_output: >
+    Comprehensive JSON analysis following the enhanced ResumeOptimization model with:
+    - Complete ATS format compliance assessment
+    - Content originality analysis and recommendations
+    - Strategic keyword integration plan by section
+    - Specific content improvement suggestions with before/after examples
+    - Achievement quantification opportunities
+    - Section-specific optimization recommendations
+  agent: resume_analyzer
+  context: [analyze_job_task]
+
+research_company_task:
+  description: >
+    Conduct comprehensive 2025 company intelligence research for {company_name} 
+    including market trends, competitive analysis, and strategic interview preparation.
+    Focus on actionable insights for job applications and interviews.
+
+    **STEP 1: Company Foundation Analysis**
+    - Current business model, revenue streams, and market position
+    - Recent financial performance and growth trajectory (2024-2025)
+    - Leadership team changes and organizational structure
+    - Core products/services and competitive advantages
+    - Company mission, values, and cultural principles
+
+    **STEP 2: 2025 Industry Trends & Market Intelligence**
+    - Industry challenges and opportunities (AI adoption, sustainability, remote work)
+    - Competitive landscape and market positioning
+    - Recent acquisitions, partnerships, or strategic initiatives
+    - Technology stack and digital transformation efforts
+    - Market share and growth projections
+
+    **STEP 3: Interview Intelligence & Culture Analysis**
+    - Common interview questions and assessment criteria
+    - Company culture indicators and working environment
+    - Employee satisfaction and retention insights
+    - Recent company news, press releases, and announcements
+    - Key challenges and pain points the company is addressing
+
+    **STEP 4: Strategic Application Insights**
+    - Hiring priorities and skill gaps (what they need most)
+    - Career development and growth opportunities
+    - Remote work policies and workplace flexibility
+    - Diversity, equity, and inclusion initiatives
+    - Recent projects or initiatives relevant to the role
+
+    **STEP 5: Competitive Intelligence & Positioning**
+    - Key competitors and market differentiation
+    - Industry trends affecting the company
+    - Innovation areas and future direction
+    - Potential talking points for interviews
+    - Company-specific achievements and milestones
+
+  expected_output: >
+    Comprehensive JSON analysis following the enhanced CompanyResearch model with:
+    - Complete company intelligence profile with 2025 market context
+    - Strategic interview preparation insights and common questions
+    - Cultural fit analysis and workplace environment details
+    - Competitive positioning and industry trend integration
+    - Actionable application and interview strategies
+  agent: company_researcher
+  context: [analyze_job_task, optimize_resume_task]
+
+generate_cover_letter_task:
+  description: >
+    Generate a compelling, ATS-optimized cover letter for {company_name} position 
+    using job analysis, resume optimization, and company research insights.
+    Extract the job title from the job analysis context and create a personalized, 
+    achievement-focused cover letter that demonstrates value.
+
+    **STEP 1: Strategic Content Planning**
+    - Extract actual candidate contact information from PDF resume (name, email, phone, LinkedIn)
+    - Include today's date for proper business letter formatting
+    - Analyze job requirements and prioritize key selling points
+    - Identify top 3-5 candidate achievements most relevant to role
+    - Map company values and culture to candidate experiences
+    - Select specific examples that demonstrate impact and results
+    - Plan narrative flow and logical progression with proper header structure
+
+    **STEP 2: ATS Optimization & Keyword Integration**
+    - Incorporate job-specific keywords naturally throughout content
+    - Ensure proper formatting for ATS parsing (standard fonts, single column)
+    - Balance keyword density with readability and authenticity
+    - Include role-specific terminology and industry language
+    - Optimize for both ATS screening and human engagement
+
+    **STEP 3: Personalization & Company Connection**
+    - Reference specific company initiatives, values, or recent news
+    - Connect candidate's background to company's mission and goals
+    - Demonstrate knowledge of company culture and industry position
+    - Include relevant examples that align with company priorities
+    - Show understanding of role's contribution to company objectives
+
+    **STEP 4: Achievement-Focused Narrative**
+    - Lead with strongest, most relevant professional accomplishments
+    - Use specific metrics and quantifiable results where possible
+    - Tell a cohesive story that positions candidate as solution
+    - Address potential gaps or concerns proactively
+    - Highlight unique value proposition and competitive advantages
+
+    **STEP 5: Professional Formatting & Call to Action**
+    - Use professional business letter format with proper structure
+    - Include compelling opening hook and strong closing statement
+    - Create clear, scannable paragraphs with logical flow
+    - Add specific, confident call to action for next steps
+    - Ensure consistent tone that matches company culture and industry
+    - Format with today's date and complete contact information
+
+    **COVER LETTER FORMAT EXAMPLE:**
+    ```
+    [Today's Date - e.g., January 15, 2025]
+    
+    [Candidate Name]
+    [Email] | [Phone] | [LinkedIn Profile URL]
+    
+    [Recipient Name]
+    [Company Name]
+    [Company Address]
+    
+    Dear [Hiring Manager/Specific Name],
+    
+    [Opening paragraph with hook and position interest]
+    
+    [Body paragraphs with achievements and company connections]
+    
+    [Closing paragraph with call to action]
+    
+    Sincerely,
+    [Candidate Name]
+    ```
+
+  expected_output: >
+    Complete cover letter analysis following the CoverLetterGeneration model with:
+    - Today's date and actual candidate contact information extracted from resume PDF
+    - Fully formatted cover letter content in markdown format
+    - Personalization elements and company connections highlighted
+    - Key selling points and achievement integration
+    - ATS optimization details and keyword strategy
+    - Impact assessment and customization level analysis
+    - Real LinkedIn profile and contact details integration
+  agent: cover_letter_generator
+  context: [analyze_job_task, optimize_resume_task, research_company_task]
+
+generate_cover_letter_content_task:
+  description: >
+    Extract the actual cover letter content from the cover letter analysis and format
+    it as a clean, professional markdown document ready for use. Include today's date
+    and actual contact information (including LinkedIn) extracted from the resume PDF.
+    Focus on creating a polished, final cover letter that can be directly used in job applications.
+
+    **STEP 1: Header & Contact Information Extraction**
+    - Include today's date in proper business letter format
+    - Extract actual candidate name, email, phone, and LinkedIn profile from PDF resume
+    - Format professional header with complete contact information
+    - Include recipient information if available from company research
+    - Use proper business letter date format (e.g., "January 15, 2025")
+
+    **STEP 2: Content Extraction & Personalization**
+    - Extract the complete cover letter content from the analysis
+    - Ensure proper business letter formatting with date and contact info
+    - Include all personalization elements and company connections
+    - Maintain professional tone and structure
+    - Integrate actual LinkedIn profile URL in contact section
+
+    **STEP 3: Final Formatting & Structure**
+    - Apply clean markdown formatting without code blocks
+    - Use proper paragraph breaks and spacing
+    - Include professional header with today's date
+    - Add recipient information and proper salutation
+    - Ensure ATS-friendly formatting with real contact details
+    - Include professional closing with actual candidate name
+
+    **STEP 4: Contact Information Integration**
+    - Extract and include actual LinkedIn profile URL from resume
+    - Include complete contact information (name, email, phone, LinkedIn)
+    - Format contact details professionally in header
+    - Ensure all information matches the resume exactly
+    - Add today's date in proper business format
+
+    **STEP 5: Quality Assurance**
+    - Verify all personalization elements are included
+    - Check for proper grammar and professional tone
+    - Ensure call-to-action is clear and compelling
+    - Validate overall flow and coherence
+    - Confirm today's date and actual contact info are present
+    - Ensure LinkedIn profile is correctly formatted and included
+
+  expected_output: >
+    A clean, professional cover letter in markdown format with:
+    - Today's date in proper business letter format
+    - Actual candidate contact information extracted from resume PDF
+    - Real LinkedIn profile URL included in contact section
+    - Proper business letter formatting with date, recipient information
+    - Personalized content with company connections and achievements
+    - Professional closing with actual candidate name and signature line
+    - Ready for direct use in job applications without modifications
+  agent: cover_letter_generator
+  context: [generate_cover_letter_task]
+
+generate_resume_task:
+  description: >
+    Extract the actual candidate resume content from PDF knowledge source and apply
+    optimization suggestions to create a personalized, ATS-optimized resume. Use the
+    candidate's real information - NEVER generate placeholder text or generic templates.
+
+    **CRITICAL: Use Real Resume Content Only**
+    - Extract actual candidate name, contact information, and all real details from PDF
+    - Use real work experience, education, skills, and achievements
+    - Apply optimization suggestions to enhance existing content
+    - Maintain candidate's authentic voice and career progression
+    - NEVER use placeholders like "[Your Name]", "[Company Name]", "[Month Year]"
+
+    **STEP 1: Content Extraction & Baseline Creation**
+    - Extract complete candidate information from PDF knowledge source
+    - Identify actual name, contact details, work history, education, skills
+    - Document current achievements and quantifiable results
+    - Preserve authentic experiences and career progression
+    - Create baseline content structure with real information
+
+    **STEP 2: Optimization Integration**
+    - Apply keyword optimization suggestions naturally into existing content
+    - Enhance achievement descriptions with stronger action verbs and metrics
+    - Integrate missing skills and certifications where relevant
+    - Improve section organization and hierarchy based on job requirements
+    - Add quantifiable results and impact metrics where possible
+
+    **STEP 3: ATS Compliance & Formatting**
+    - Apply ATS-friendly formatting (single column, standard fonts, clear headers)
+    - Optimize section order based on job requirements and candidate strengths
+    - Ensure proper keyword density without keyword stuffing
+    - Use standard section headers (Professional Summary, Experience, Education, Skills)
+    - Format consistently with markdown headers and bullet points
+
+    **STEP 4: Content Enhancement & Personalization**
+    - Strengthen professional summary with job-specific positioning
+    - Enhance work experience descriptions with impact and results
+    - Highlight most relevant skills and achievements for the target role
+    - Add or reorganize sections based on job requirements
+    - Ensure logical flow and professional presentation
+
+    **STEP 5: Final Quality Check & Documentation**
+    - Verify all content is actual candidate information (no placeholders)
+    - Confirm ATS optimization goals are met
+    - Document specific changes and improvements made
+    - Ensure professional presentation and markdown formatting
+    - Validate completeness and accuracy of all sections
+
+  expected_output: >
+    A complete, personalized resume using the candidate's actual information with:
+    - Real candidate name, contact details, and authentic work experience
+    - Applied optimization suggestions integrated naturally
+    - ATS-friendly formatting and keyword optimization
+    - Enhanced achievement descriptions with quantifiable results
+    - Professional markdown formatting with clear section hierarchy
+    - Documentation of changes and optimization choices made
+  agent: resume_writer
+  context: [optimize_resume_task, analyze_job_task, research_company_task, generate_cover_letter_task]
+
+generate_report_task:
+  description: >
+    Generate a comprehensive, visually-rich executive career intelligence report with 
+    diagrams, charts, predictive insights, and interactive elements. Create a professional 
+    document that combines data visualization with strategic analysis for maximum impact.
+
+    **STEP 1: Executive Dashboard & Key Metrics Visualization**
+    - Create a visual executive summary dashboard with key metrics
+    - Design scoring gauges and progress indicators for job fit analysis
+    - Include predictive success probability with confidence intervals
+    - Add visual priority matrix for improvement areas
+    - Create quick-wins checklist with visual indicators
+
+    **STEP 2: Comprehensive Job Match Analysis with Visual Elements**
+    - Generate skill alignment radar chart using Mermaid diagram
+    - Create detailed scoring breakdown table with progress bars
+    - Design skill gap analysis flowchart with development pathways
+    - Add ATS compatibility score visualization with improvement indicators
+    - Include industry trend alignment matrix with positioning map
+
+    **STEP 3: Resume & Application Optimization Dashboard**
+    - Create before/after comparison tables with impact metrics
+    - Design ATS optimization progress indicators and keyword density charts
+    - Add content originality analysis with visual authenticity score
+    - Include achievement quantification impact assessment visualization
+    - Generate format compliance checklist with visual status indicators
+
+    **STEP 4: Cover Letter Performance Analytics**
+    - Create personalization effectiveness gauge with scoring breakdown
+    - Design company connection strength visualization
+    - Add narrative flow analysis with engagement prediction
+    - Include ATS optimization effectiveness chart
+    - Generate response probability prediction with confidence metrics
+
+    **STEP 5: Strategic Company Intelligence with Visual Insights**
+    - Create company culture fit analysis radar chart
+    - Design competitive positioning map with industry context
+    - Add interview preparation roadmap with visual timeline
+    - Include company challenge-solution alignment matrix
+    - Generate strategic conversation starter network diagram
+
+    **STEP 6: Career Intelligence & Future Planning Visualization**
+    - Create skill development roadmap with timeline visualization
+    - Design industry trend analysis with future-proofing indicators
+    - Add competitive analysis positioning chart
+    - Include professional development timeline with milestones
+    - Generate career trajectory projection with growth opportunities
+
+    **STEP 7: Actionable Recommendations Dashboard**
+    - Create prioritized action items matrix with urgency/impact visualization
+    - Design application strategy timeline with optimal timing indicators
+    - Add follow-up protocol flowchart with relationship building steps
+    - Include continuous improvement plan with measurable milestone tracking
+    - Generate success metrics dashboard with progress indicators
+
+    **ADVANCED FORMATTING & VISUAL REQUIREMENTS:**
+    - Use rich markdown with emojis, icons, and visual hierarchy
+    - Include ACTUAL Mermaid diagrams (not placeholder images) for complex data relationships
+    - Create interactive-style tables with progress bars (using Unicode bars like █████████░)
+    - Add visual scoring elements: ⭐⭐⭐⭐⭐ ratings, 🟢🟡🔴 status indicators
+    - Include data visualization tables with percentage bars using Unicode blocks
+    - Use collapsible sections with clear visual separators
+    - Add timeline visualizations using actual Mermaid gantt charts
+    - Include network diagrams using Mermaid graph syntax
+    - Create comparison matrices with visual scoring using Unicode elements
+    - Use color-coded priority indicators throughout (🔴🟡🟢)
+    - CRITICAL: Generate actual working Mermaid code blocks, not placeholder images
+    - CRITICAL: Use Unicode block characters for progress bars: █▉▊▋▌▍▎▏░
+
+    **MERMAID DIAGRAM REQUIREMENTS:**
+    - Skills radar chart using Mermaid syntax: ```mermaid (quadrantChart, pie, etc.)
+    - Company culture fit using Mermaid quadrant chart
+    - Interview timeline using Mermaid gantt chart
+    - Skill development roadmap using Mermaid timeline
+    - Process flows using Mermaid flowchart syntax
+    - NEVER use placeholder images - always generate actual Mermaid code
+    - Use proper Mermaid chart types: flowchart, gantt, pie, quadrantChart, timeline
+
+    **MERMAID DIAGRAM EXAMPLES TO FOLLOW:**
+    ```mermaid
+    pie title Skills Match Analysis
+        "Python" : 85
+        "Machine Learning" : 75
+        "Leadership" : 65
+        "Communication" : 80
+    ```
+    
+    ```mermaid
+    gantt
+        title Career Development Timeline
+        section Skills Development
+        Docker Certification     :active, 2024-01-01, 2w
+        Leadership Training      :2024-01-15, 1w
+        section Job Applications
+        Company Research         :2024-01-08, 3d
+        Application Submission   :2024-01-20, 1d
+    ```
+    
+    ```mermaid
+    flowchart TD
+        A[Job Analysis] --> B[Resume Optimization]
+        B --> C[Cover Letter Creation]
+        C --> D[Application Submission]
+        D --> E[Interview Preparation]
+    ```
+
+    **VISUAL ELEMENTS TO INCLUDE:**
+    - Skill radar charts using Mermaid quadrantChart
+    - Progress bars using Unicode: ████████▌░ 85%
+    - Timeline roadmaps using Mermaid gantt charts  
+    - Scoring dashboards using tables with Unicode bars
+    - Comparison matrices using formatted tables
+    - Network diagrams using Mermaid graph syntax
+    - Flowcharts using Mermaid flowchart syntax
+    - Priority matrices using formatted tables with visual indicators
+    - Trend analysis using Mermaid line charts
+    - Success probability using Unicode gauge visualization
+
+    **UNICODE PROGRESS BAR EXAMPLES:**
+    | Metric | Score | Visualization |
+    |--------|-------|---------------|
+    | Job Fit Score | 8.5/10 | ████████▌░ 85% |
+    | ATS Compatibility | 9.2/10 | █████████▌ 92% |
+    | Success Probability | 78% | ███████▊░░ 78% |
+    
+    **VISUAL SCORING EXAMPLES:**
+    - High Priority: 🔴 ⭐⭐⭐⭐⭐
+    - Medium Priority: 🟡 ⭐⭐⭐⭐░
+    - Low Priority: 🟢 ⭐⭐⭐░░
+    - Status: 🟢 Complete | 🟡 In Progress | 🔴 Urgent
+
+    **INTERACTIVE FEATURES:**
+    - Quick reference sections
+    - Action item tracking
+    - Success metrics monitoring
+    - Progress visualization
+    - Priority ranking systems
+
+  expected_output: >
+    A visually-rich, executive-level career intelligence report with:
+    - Interactive dashboards and scoring visualizations
+    - Mermaid diagrams for complex data relationships
+    - Progress bars, charts, and visual indicators throughout
+    - Predictive analytics with confidence intervals
+    - Strategic insights with visual positioning maps
+    - Timeline roadmaps for career development
+    - Comprehensive action item tracking with visual priorities
+    - Professional presentation suitable for executive review
+    - Enhanced readability with visual hierarchy and interactive elements
+    
+    CRITICAL: The report must contain ACTUAL working Mermaid diagrams, 
+    Unicode progress bars, and visual elements - NO placeholder images 
+    or links to external image services. All visual elements must be 
+    generated as working code that renders directly in markdown.
+  agent: report_generator
+  context: [analyze_job_task, optimize_resume_task, research_company_task, generate_cover_letter_task, generate_cover_letter_content_task]

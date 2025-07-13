@@ -1,0 +1,23 @@
+[project]
+name = "cv_opt"
+version = "0.1.0"
+description = "cv_opt using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]>=0.140.0,<1.0.0"
+]
+
+[project.scripts]
+cv_opt = "cv_opt.main:run"
+run_crew = "cv_opt.main:run"
+train = "cv_opt.main:train"
+replay = "cv_opt.main:replay"
+test = "cv_opt.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
